@@ -108,7 +108,10 @@ bool GetVolumeLevel(int *level,int *mute)
 
 int main()
 {
-    CoInitialize(0);
+    HRESULT hr;
+    hr = CoInitialize(NULL);
+    printf("CoInitialize return:%x\n", hr);
+
     try {
         int b, i;//b是静音状态，i是音量
         for (int a = 0; a < 9; ++a) {
@@ -122,5 +125,6 @@ int main()
     catch (...) {
         //错误处理...
     }
+
     CoUninitialize();
 }
